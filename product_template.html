@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}} - INYA New York</title>
+    <meta name="description" content="Shop the {{title}} at INYA New York. Explore our luxury collection of sustainable shoulder bags and handbags.">
+    <link rel="icon" type="image/png" href="/images/beyaz_zemin.jpg">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/product.css">
+</head>
+<body>
+    <header>
+        <a href="/" class="logo">
+            <img src="/images/beyaz_zemin.jpg" alt="INYA Logo">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/collections/all.html">Collections</a></li>
+                <li><a href="/pages/about.html">About Us</a></li>
+                <li><a href="/pages/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="product-page">
+        <div class="product-container">
+            <div class="product-gallery">
+                {{images_html}}
+            </div>
+            
+            <div class="product-details">
+                <h1 class="product-title">{{title}}</h1>
+                <p class="product-sku">SKU: {{sku}}</p>
+                <p class="product-price">${{price}}</p>
+                
+                <div class="product-description">
+                    {{body_html}}
+                </div>
+                
+                <div class="checkout-actions">
+                    <a href="https://www.tiktok.com/view/product/{{tiktok_id}}" target="_blank" rel="noopener noreferrer" class="buy-btn large-btn">
+                        Buy on TikTok
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 INYA New York. All rights reserved.</p>
+    </footer>
+</body>
+</html>

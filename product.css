@@ -1,0 +1,120 @@
+.product-page {
+  padding: 8rem 6% 4rem;
+  background-color: var(--bg-color);
+  min-height: 100vh;
+}
+
+.product-container {
+  display: flex;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.product-gallery {
+  flex: 1;
+  background: #f8f8f8;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  max-height: 700px;
+}
+
+.product-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.product-details .product-title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.product-details .product-sku {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 1.5rem;
+}
+
+.product-details .product-price {
+  font-family: var(--font-body);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: var(--primary-color);
+}
+
+.product-description {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 3rem;
+  border-top: 1px solid #eee;
+  padding-top: 2rem;
+}
+
+.product-description ul {
+  margin-left: 1.5rem;
+  margin-top: 1rem;
+}
+
+.product-description li {
+  margin-bottom: 0.5rem;
+}
+
+.large-btn {
+  font-size: 1rem;
+  padding: 1.2rem;
+  width: 100%;
+  max-width: 400px;
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: #fff;
+}
+
+.large-btn:hover {
+  background-color: transparent;
+  color: var(--accent-color);
+}
+
+@media (max-width: 900px) {
+  .product-container {
+    flex-direction: column;
+  }
+}
+
+.product-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.gallery-image {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+@media (min-width: 768px) {
+    .product-details {
+        position: sticky;
+        top: 100px;
+        align-self: flex-start;
+        height: max-content;
+    }
+}
+
