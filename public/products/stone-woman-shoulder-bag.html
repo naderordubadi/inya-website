@@ -64,5 +64,33 @@
     <footer>
         <p>&copy; 2026 INYA New York. All rights reserved.</p>
     </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="image-modal" class="image-modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modal-img">
+    </div>
+
+    <script>
+        const modal = document.getElementById("image-modal");
+        const modalImg = document.getElementById("modal-img");
+        const closeBtn = document.getElementsByClassName("close-modal")[0];
+        
+        document.querySelectorAll('.gallery-image').forEach(img => {
+            img.onclick = function(){
+                modal.style.display = "flex";
+                modalImg.src = this.src;
+            }
+        });
+        
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+        modal.onclick = function(e) {
+            if (e.target !== modalImg) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
