@@ -34,10 +34,19 @@ for product in products:
     if not handle:
         continue
     
-    title = str(product.get('title', ''))
+    title = str(product.get('title', '')).strip()
+    words = title.split()
+    if not words: continue
     
-    # Group by collection (first word of title)
-    collection_name = title.split()[0]
+    # Group by collection (first word of title, case-insensitive)
+    first_word = words[0].upper()
+    
+    # Special case for Broadway N°1 and N°2
+    if first_word == 'BROADWAY' and len(words) > 1 and words[1].upper().startswith('N°'):
+        collection_name = f"BROADWAY {words[1].upper()}"
+    else:
+        collection_name = first_word
+        
     collections[collection_name].append(product)
         
     html = template
@@ -88,11 +97,14 @@ for collection_name, col_products in collections.items():
         </a>
         """
     
+    # Create a URL-safe slug for the collection
+    slug = collection_name.lower().replace(' ', '-').replace('°', '')
+    
     col_html = grid_template.replace('{{page_title}}', collection_name + " Collection")
     col_html = col_html.replace('{{heading}}', collection_name.upper() + " COLLECTION")
     col_html = col_html.replace('{{grid_html}}', grid_html)
     
-    col_file = os.path.join(COLLECTIONS_DIR, f"{collection_name.lower()}.html")
+    col_file = os.path.join(COLLECTIONS_DIR, f"{slug}.html")
     with open(col_file, 'w') as f:
         f.write(col_html)
 
@@ -102,10 +114,11 @@ print(f"Successfully generated {len(collections)} collection pages.")
 master_grid_html = ""
 for collection_name, col_products in collections.items():
     # Use the first product's image as the collection cover
+    slug = collection_name.lower().replace(' ', '-').replace('°', '')
     img = col_products[0].get('images', [col_products[0].get('image', '')])[0] if col_products else ''
     
     master_grid_html += f"""
-    <a href="/collections/{collection_name.lower()}.html" class="product-card">
+    <a href="/collections/{slug}.html" class="product-card">
         <div class="image-wrapper">
             <img src="{img}" alt="{collection_name} Collection" class="product-image">
         </div>
